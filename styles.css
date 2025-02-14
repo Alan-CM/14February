@@ -1,0 +1,227 @@
+/* Fuente personalizada de Google */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;700&display=swap');
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff00ff, #00ffff, #ff00ff); /* Fondo neón */
+    font-family: 'Poppins', sans-serif;
+    flex-direction: column;
+    margin: 0;
+    min-height: 100vh;
+    padding: 1rem;
+    box-sizing: border-box;
+    overflow: hidden; /* Evita que los corazones generen scroll */
+    animation: gradientAnimation 10s ease infinite; /* Animación del gradiente */
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Contenedor */
+.container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 1rem;
+    padding: 1.5rem;
+}
+
+/* Título */
+h1 {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin-bottom: 1.5rem;
+    color: #ff4757;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Botones */
+.buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.yes-btn, .no-btn {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    padding: clamp(8px, 2vw, 12px) clamp(20px, 4vw, 30px);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    white-space: nowrap;
+}
+
+.yes-btn {
+    background-color: #4cd137;
+}
+
+.yes-btn:hover {
+    background-color: #44bd32;
+    transform: translateY(-2px);
+}
+
+.no-btn {
+    background-color: #ff4757;
+}
+
+.no-btn:hover {
+    background-color: #ff6b81;
+    transform: translateY(-2px);
+}
+
+/* Imagen */
+.image-container {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.image-container img {
+    max-width: min(470px, 80vw);
+    height: auto;
+    border-radius: 41px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Autoria */
+.autoria {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: clamp(0.7rem, 2vw, 0.8rem);
+    color: #666;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 5px 10px;
+    border-radius: 20px;
+    z-index: 100;
+}
+
+/* Corazones animados */
+.hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ff4757;
+    transform: rotate(45deg);
+    animation: heartFall linear infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ff4757;
+}
+
+.heart::before {
+    left: -10px;
+}
+
+.heart::after {
+    top: -10px;
+}
+
+@keyframes heartFall {
+    0% {
+        transform: translateY(-100vh) rotate(45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* Ajustes para los corazones en móvil */
+@media (max-width: 480px) {
+    .heart {
+        width: 15px;
+        height: 15px;
+    }
+
+    .heart::before,
+    .heart::after {
+        width: 15px;
+        height: 15px;
+    }
+
+    .heart::before {
+        left: -7.5px;
+    }
+
+    .heart::after {
+        top: -7.5px;
+    }
+
+    .container {
+        margin: 0.5rem;
+        padding: 1rem;
+    }
+}
+
+/* Ajustes para tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+    .container {
+        width: 85%;
+        padding: 2rem;
+    }
+}
+
+/* Ajustes para pantallas más grandes */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 800px;
+    }
+}
+
+/* Ajustes para orientación horizontal en móviles */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        padding: 0.5rem;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    .image-container {
+        max-width: 200px;
+    }
+
+    h1 {
+        margin-bottom: 1rem;
+    }
+}
